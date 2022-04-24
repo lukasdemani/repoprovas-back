@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
-import questionService from "../services/questionService.js";
-import userService, { CreateUserData } from "../services/userService.js";
+import userService, { CreateUserData } from "../services/userService";
 
 export async function create(req: Request, res: Response) {
   const user: CreateUserData = req.body;
@@ -17,15 +16,5 @@ export async function login(req: Request, res: Response) {
 
   res.send({
     token,
-  });
-}
-
-export async function getQuestions(req: Request, res: Response) {
-  const { id } = req.params;
-
-  const questions = await questionService.findByUserId(+id);
-
-  res.send({
-    questions,
   });
 }

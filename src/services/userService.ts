@@ -1,7 +1,7 @@
 import { User } from "@prisma/client";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import userRepository from "../repositories/userRepository.js";
+import userRepository from "../repositories/userRepository";
 
 async function findById(id: number) {
   const user = await userRepository.findById(id);
