@@ -21,3 +21,10 @@ export async function getTestsByDiscipline(req: Request, res: Response){
 
     res.send(testsByDiscipline)
 }
+
+export async function getTestsByTeacher(req: Request, res: Response){
+    const { teacherId }= req.params;
+
+    const testsByTeacher = await testService.findTestsByTeacher(Number(teacherId))
+    res.send(testsByTeacher)
+}

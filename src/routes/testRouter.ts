@@ -1,5 +1,6 @@
 import { Router } from "express";
 import * as testController from "../controllers/testController.js";
+import { ensureAuthenticationMiddleware } from "../middlewares/ensureAuthenticationMiddleware.js";
 
 
 const testRouter = Router();
@@ -10,6 +11,7 @@ testRouter.get(
 
 testRouter.get(
     "/categories",
+    ensureAuthenticationMiddleware,
     testController.getCategories
   );
 
