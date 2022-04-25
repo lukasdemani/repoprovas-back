@@ -1,8 +1,11 @@
 import { Request, Response } from "express";
-import userService, { CreateUserData } from "../services/userService";
+import userService, { CreateUserData } from "../services/userService.js";
 
 export async function create(req: Request, res: Response) {
-  const user: CreateUserData = req.body;
+  const user: CreateUserData = {
+    email: req.body.email,
+    password: req.body.password
+  };
 
   await userService.insert(user);
 

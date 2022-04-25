@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import userService from "../services/userService";
+import userService from "../services/userService.js";
 
 export async function ensureAuthenticationMiddleware(
   req: Request,

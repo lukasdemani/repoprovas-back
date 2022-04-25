@@ -1,18 +1,22 @@
 import { Router } from "express";
-import * as testController from "../controllers/testController";
-import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware";
-import { testSchema } from "../schemas/testSchema";
+import * as testController from "../controllers/testController.js";
 
-const userRouter = Router();
-userRouter.post(
-  "/sign-up",
-  validateSchemaMiddleware(testSchema),
-  testController.create
+
+const testRouter = Router();
+testRouter.get(
+  "/tests/:tab",
+  testController.getTests
 );
-userRouter.post(
-  "/sign-in",
-  validateSchemaMiddleware(testSchema),
-  testController.login
-);
+
+testRouter.get(
+    "/categories",
+    testController.getCategories
+  );
+
+testRouter.get(
+    "/subjects/:disciplineId/tests",
+    testController.getTestsByDiscipline
+)
+
 
 export default testRouter;
